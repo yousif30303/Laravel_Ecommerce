@@ -25,12 +25,12 @@
             </a>
             <div class="dropdown-menu dropdown-menu-header wd-200">
               <ul class="list-unstyled user-profile-nav">
-                <li><a href=""><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
+                <li><a href="{{route('admin.profile')}}"><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
                 <li><a href=""><i class="icon ion-ios-gear-outline"></i> Settings</a></li>
                 <li><a href=""><i class="icon ion-ios-download-outline"></i> Downloads</a></li>
                 <li><a href=""><i class="icon ion-ios-star-outline"></i> Favorites</a></li>
                 <li><a href=""><i class="icon ion-ios-folder-outline"></i> Collections</a></li>
-                <li><a href=""><i class="icon ion-power"></i> Sign Out</a></li>
+                <li><a href="{{route('logout')}}"><i class="icon ion-power"></i> Sign Out</a></li>
               </ul>
             </div><!-- dropdown-menu -->
           </div><!-- dropdown -->
@@ -225,5 +225,26 @@
     <script src="{{asset('backend/js/starlight.js')}}"></script>
     <script src="{{asset('backend/js/ResizeSensor.js')}}"></script>
     <script src="{{asset('backend/js/dashboard.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      @if(Session::has('message'))
+      var type = "{{ Session::get('alert-type','info') }}"
+      switch(type){
+         case 'info':
+         toastr.info(" {{ Session::get('message') }} ");
+         break;
+         case 'success':
+         toastr.success(" {{ Session::get('message') }} ");
+         break;
+         case 'warning':
+         toastr.warning(" {{ Session::get('message') }} ");
+         break;
+         case 'error':
+         toastr.error(" {{ Session::get('message') }} ");
+         break; 
+      }
+      @endif 
+     </script>
+     
   </body>
 </html>

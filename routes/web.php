@@ -18,7 +18,7 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 
 Route::get('/', function () {
-    return view('admin.index');
+    return view('frontend.index');
 })->name('home');
 
 Route::get('/register',[RegisterController::class,'index'])->name('register');
@@ -27,7 +27,7 @@ Route::post('/register',[RegisterController::class,'store']);
 Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::post('/login',[LoginController::class,'store']);
 
-Route::post('/logout',[LogoutController::class,'store'])->name('logout');
+Route::get('/logout',[LogoutController::class,'store'])->name('logout');
 
-Route::get('/admin',[AdminController::class,'index']);
+Route::get('/admin/profile',[AdminController::class,'index'])->name('admin.profile');
 

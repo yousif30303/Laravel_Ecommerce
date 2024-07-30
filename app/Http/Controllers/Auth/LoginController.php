@@ -20,9 +20,13 @@ class LoginController extends Controller
         if(!auth()->attempt($request->only('username','password'))){
             return back()->with('status','Invalid Login Details');
         }
+        $notification = array(
+            'message' => 'User Logged in Successfully', 
+            'alert-type' => 'success'
+        );
         
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with($notification);
 
     }
 }
