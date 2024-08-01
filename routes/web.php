@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Home\HomeSliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,10 @@ Route::get('/', function () {
     return view('frontend.index');
 })->name('home');
 
+Route::get('/admin', function () {
+    return view('admin.index');
+})->name('home');
+
 Route::get('/register',[RegisterController::class,'index'])->name('register');
 Route::post('/register',[RegisterController::class,'store']);
 
@@ -31,3 +36,4 @@ Route::get('/logout',[LogoutController::class,'store'])->name('logout');
 
 Route::get('/admin/profile',[AdminController::class,'index'])->name('admin.profile');
 
+Route::get('/home/slide',[HomeSliderController::class,'HomeSlider'])->name('home.slide');
