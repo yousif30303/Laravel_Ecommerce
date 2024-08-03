@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Home;
 use App\Models\HomeSlide;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+
 
 class HomeSliderController extends Controller
 {
@@ -15,16 +18,22 @@ class HomeSliderController extends Controller
 
      } // End Method 
 
-     
+
      public function UpdateSlider(Request $request){
 
         $slide_id = $request->id;
 
         if ($request->file('home_slide')) {
-            $image = $request->file('home_slide');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();  // 3434343443.jpg
+            $image1 = $request->file('home_slide');
+            $name_gen = hexdec(uniqid()).'.'.$image1->getClientOriginalExtension();  // 3434343443.jpg
 
-            Image::make($image)->resize(636,852)->save('upload/home_slide/'.$name_gen);
+            $manager = new ImageManager(new Driver());
+
+
+            $image = $manager->read($image1);
+
+
+            $image->resize(636,852)->save('upload/home_slide/'.$name_gen);
             $save_url = 'upload/home_slide/'.$name_gen;
 
             HomeSlide::findOrFail($slide_id)->update([

@@ -37,3 +37,4 @@ Route::get('/logout',[LogoutController::class,'store'])->name('logout');
 Route::get('/admin/profile',[AdminController::class,'index'])->name('admin.profile');
 
 Route::get('/home/slide',[HomeSliderController::class,'HomeSlider'])->name('home.slide');
+Route::post('/update/slider',[HomeSliderController::class,'UpdateSlider'])->name('update.slider');

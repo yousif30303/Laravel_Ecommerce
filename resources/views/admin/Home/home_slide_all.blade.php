@@ -10,8 +10,9 @@
                 <div class="card"><br><br>
                     <h5 class="card-title ml-4">Home Slide Page </h5>
 
-                    <form method="post" action="" enctype="multipart/form-data">
+                    <form method="post" action="{{route('update.slider')}}" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $homeslide->id }}">
                         <div class="card-body">
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
@@ -42,8 +43,7 @@
                             <div class="row mb-3">
                                  <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
                                 <div class="col-sm-10">
-                                    <img id="showImage" class="rounded avatar-lg" src="{{ (!empty($homeslide->home_slide))? url('upload/home_slide/'.$homeslide->home_slide):url('upload/no_image.jpg') }}" alt="Card image cap">
-                                </div>
+                                    <img id="showImage" class="rounded avatar-lg" src="{{ (!empty($homeslide->home_slide))? url( $homeslide->home_slide):url('upload/no_image.jpg') }}" alt="Card image cap">                                </div>
                             </div>
                         </div>
                         <button class="btn btn-info btn-rounded waves-effect waves-light ml-4 mb-4" type="submit">Update Slide</button>
