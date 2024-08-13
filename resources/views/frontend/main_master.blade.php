@@ -1,71 +1,94 @@
-<!doctype html>
-<html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Rasalina - Personal Portfolio HTML Template</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="keywords" content="MediaCenter, Template, eCommerce">
+<meta name="robots" content="all">
+<title>Easy Online Shop </title>
 
-		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/img/favicon.png') }}">
-        <!-- Place favicon.ico in the root directory -->
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
 
-		<!-- CSS here -->
-        <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/assets/css/magnific-popup.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/assets/css/fontawesome-all.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/assets/css/slick.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/assets/css/default.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
-    </head>
-    <body>
+<!-- Customizable CSS -->
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/main.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/blue.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.carousel.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.transitions.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.min.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/rateit.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap-select.min.css') }}">
 
-        <!-- preloader-start -->
-        <div id="preloader">
-            <div class="rasalina-spin-box"></div>
-        </div>
-        <!-- preloader-end -->
+<!-- Icons/Glyphs -->
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/font-awesome.css') }}">
 
-		<!-- Scroll-top -->
-        <button class="scroll-top scroll-to-target" data-target="html">
-            <i class="fas fa-angle-up"></i>
-        </button>
-        <!-- Scroll-top-end-->
+<!-- Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-        <!-- header-area -->
-        @include('frontend.body.header')
-
-    <!-- header-area-end -->
-
-    <!-- main-area -->
-    <main>
-        @yield('main')
-
-   </main>
-        <!-- main-area-end -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
 
+</head>
+<body class="cnt-home">
+<!-- ============================================== HEADER ============================================== -->
+@include('frontend.body.header')
 
-        <!-- Footer-area -->
-        @include('frontend.body.footer')
-        <!-- Footer-area-end -->
+<!-- ============================================== HEADER : END ============================================== -->
+@yield('content')
+<!-- /#top-banner-and-menu --> 
+
+<!-- ============================================================= FOOTER ============================================================= -->
+@include('frontend.body.footer')
+<!-- ============================================================= FOOTER : END============================================================= --> 
+
+<!-- For demo purposes – can be removed on production --> 
+
+<!-- For demo purposes – can be removed on production : End --> 
+
+<!-- JavaScripts placed at the end of the document so the pages load faster --> 
+<script src="{{ asset('frontend/assets/js/jquery-1.11.1.min.js') }}"></script> 
+<script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script> 
+<script src="{{ asset('frontend/assets/js/bootstrap-hover-dropdown.min.js') }}"></script> 
+<script src="{{ asset('frontend/assets/js/owl.carousel.min.js') }}"></script> 
+<script src="{{ asset('frontend/assets/js/echo.min.js') }}"></script> 
+<script src="{{ asset('frontend/assets/js/jquery.easing-1.3.min.js') }}"></script> 
+<script src="{{ asset('frontend/assets/js/bootstrap-slider.min.js') }}"></script> 
+<script src="{{ asset('frontend/assets/js/jquery.rateit.min.js') }}"></script> 
+<script type="text/javascript" src="{{ asset('frontend/assets/js/lightbox.min.js') }}"></script> 
+<script src="{{ asset('frontend/assets/js/bootstrap-select.min.js') }}"></script> 
+<script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script> 
+<script src="{{ asset('frontend/assets/js/scripts.js') }}"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+ @if(Session::has('message'))
+ var type = "{{ Session::get('alert-type','info') }}"
+ switch(type){
+    case 'info':
+    toastr.info(" {{ Session::get('message') }} ");
+    break;
+
+    case 'success':
+    toastr.success(" {{ Session::get('message') }} ");
+    break;
+
+    case 'warning':
+    toastr.warning(" {{ Session::get('message') }} ");
+    break;
+
+    case 'error':
+    toastr.error(" {{ Session::get('message') }} ");
+    break; 
+ }
+ @endif 
+</script>
 
 
-
-
-		<!-- JS here -->
-        <script src="{{ asset('frontend/assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
-        <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('frontend/assets/js/isotope.pkgd.min.js') }}"></script>
-        <script src="{{ asset('frontend/assets/js/imagesloaded.pkgd.min.js') }}"></script>
-        <script src="{{ asset('frontend/assets/js/jquery.magnific-popup.min.js') }}"></script>
-        <script src="{{ asset('frontend/assets/js/element-in-view.js') }}"></script>
-        <script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
-        <script src="{{ asset('frontend/assets/js/ajax-form.js') }}"></script>
-        <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
-        <script src="{{ asset('frontend/assets/js/plugins.js') }}"></script>
-        <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
-    </body>
+</body>
 </html>

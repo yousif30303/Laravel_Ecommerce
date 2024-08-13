@@ -1,100 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@extends('frontend.main_master')
+@section('content')
 
-    <!-- Twitter -->
-    <meta name="twitter:site" content="@themepixels">
-    <meta name="twitter:creator" content="@themepixels">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Starlight">
-    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta name="twitter:image" content="http://themepixels.me/starlight/img/starlight-social.png">
+<div class="breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <ul class="list-inline list-unstyled">
+                <li><a href="home.html">Home</a></li>
+                <li class='active'>Login</li>
+            </ul>
+        </div><!-- /.breadcrumb-inner -->
+    </div><!-- /.container -->
+</div><!-- /.breadcrumb -->
 
-    <!-- Facebook -->
-    <meta property="og:url" content="http://themepixels.me/starlight">
-    <meta property="og:title" content="Starlight">
-    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+<div class="body-content">
+    <div class="container">
+        <div class="sign-in-page">
+            <div class="row">
+                <!-- Sign-in -->            
+<div class="col-md-6 col-sm-6 sign-in">
+    <h4 class="">Sign in</h4>
+    <p class="">Hello, Welcome to your account.</p>
+    <div class="social-sign-in outer-top-xs">
+        <a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
+        <a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Sign In with Twitter</a>
+    </div>
+   
 
-    <meta property="og:image" content="http://themepixels.me/starlight/img/starlight-social.png">
-    <meta property="og:image:secure_url" content="http://themepixels.me/starlight/img/starlight-social.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="600">
-
-    <!-- Meta -->
-    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
-    <meta name="author" content="ThemePixels">
-
-    <title>Starlight Responsive Bootstrap 4 Admin Template</title>
-
-    <!-- vendor css -->
-    <link href="{{asset('backend/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
-    <link href="{{asset('backend/lib/Ionicons/css/ionicons.css')}}" rel="stylesheet">
-    <link href="{{asset('backend/lib/select2/css/select2.min.css')}}" rel="stylesheet">
+    <form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login') }}">
+            @csrf 
 
 
-    <!-- Starlight CSS -->
-    <link rel="stylesheet" href="{{asset('backend/css/starlight.css')}}">
-  </head>
+        <div class="form-group">
+            <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
+            <input type="email" id="email" name="email" class="form-control unicase-form-control text-input">
+        </div>
+        <div class="form-group">
+            <label class="info-title" for="exampleInputPassword1">Password <span>*</span></label>
+            <input type="password" id="password" name="password" class="form-control unicase-form-control text-input" id="exampleInputPassword1" >
+        </div>
+        <div class="radio outer-xs">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Remember me!
+            </label>
+            <a href="" class="forgot-password pull-right">Forgot your Password?</a>
+        </div>
+        <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
+    </form>   
 
-  <body>
 
-    <div class="d-flex align-items-center justify-content-center bg-sl-primary ht-md-100v">
+</div>
+<!-- Sign-in -->
 
-      <div class="login-wrapper wd-300 wd-xs-400 pd-25 pd-xs-40 bg-white">
-        <div class="signin-logo tx-center tx-24 tx-bold tx-inverse mg-b-40">Register</div>
-        <form action="{{route('register')}}" method="post">
+<!-- create a new account -->
+<div class="col-md-6 col-sm-6 create-new-account">
+    <h4 class="checkout-subtitle">Create a new account</h4>
+    <p class="text title-tag-line">Create your new account.</p>
+   
+    <form method="POST" action="{{ route('register') }}">
             @csrf
-            <div class="form-group">
-                <input type="text" class="form-control" name="name" placeholder="Enter your name" style="@error('name') border-style: solid;border-color: red @enderror" value="{{old('name')}}">
-                @error('name')
-                    <div style="color:red">{{$message}}</div>
-                @enderror
-            </div><!-- form-group -->
-            <div class="form-group">
-              <input type="text" class="form-control" name="username" placeholder="Enter your username" style="@error('username') border-style: solid;border-color: red @enderror" value="{{old('username')}}">
-              @error('username')
-                  <div style="color:red">{{$message}}</div>
-              @enderror
-            </div><!-- form-group -->
-            <div class="form-group">
-                <input type="text" class="form-control" name="email" placeholder="Enter your email" style="@error('email') border-style: solid;border-color: red @enderror" value="{{old('email')}}">
-                @error('email')
-                    <div style="color:red">{{$message}}</div>
-                @enderror
-            </div><!-- form-group -->
-            <div class="form-group">
-            <input type="password" class="form-control" name="password" id="password" style="@error('password') border-style: solid;border-color: red @enderror" placeholder="Enter your password">
-                @error('password')
-                    <div style="color:red">{{$message}}</div>
-                @enderror
-            </div><!-- form-group -->
-            <div class="form-group">
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Password Confirmation">
-            </div><!-- form-group -->
-            <button type="submit" class="btn btn-info btn-block">Sign Up</button>
-        </form>
 
-        <div class="mg-t-40 tx-center">Already have an account? <a href="{{route('login')}}" class="tx-info">Sign In</a></div>
-      </div><!-- login-wrapper -->
-    </div><!-- d-flex -->
+         <div class="form-group">
+            <label class="info-title" for="exampleInputEmail1">Name <span>*</span></label>
+            <input type="text" id="name" name="name" class="form-control unicase-form-control text-input">
+            @error('name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
 
-    <script src="{{asset('backend/lib/jquery/jquery.js')}}"></script>
-    <script src="{{asset('backend/lib/popper.js/popper.js')}}"></script>
-    <script src="{{asset('backend/lib/bootstrap/bootstrap.js')}}"></script>
-    <script src="{{asset('backend/lib/select2/js/select2.min.js')}}"></script>
-    <script>
-      $(function(){
-        'use strict';
+        <div class="form-group">
+            <label class="info-title" for="exampleInputEmail2">Email Address <span>*</span></label>
+            <input type="email" id="email" name="email" class="form-control unicase-form-control text-input">
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        
+        <div class="form-group">
+            <label class="info-title" for="exampleInputEmail1">Phone Number <span>*</span></label>
+            <input type="text" id="phone" name="phone" class="form-control unicase-form-control text-input" >
+            @error('phone')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
 
-        $('.select2').select2({
-          minimumResultsForSearch: Infinity
-        });
-      });
-    </script>
+        <div class="form-group">
+            <label class="info-title" for="exampleInputEmail1">Password <span>*</span></label>
+            <input type="password" id="password" name="password" class="form-control unicase-form-control text-input" >
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+         <div class="form-group">
+            <label class="info-title" for="exampleInputEmail1">Confirm Password <span>*</span></label>
+            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control unicase-form-control text-input" >
+            @error('password_confirmation')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Sign Up</button>
+    </form>
+    
+    
+</div>  
+<!-- create a new account -->           </div><!-- /.row -->
+        </div><!-- /.sigin-in-->
+        <!-- ============================================== BRANDS CAROUSEL ============================================== -->
 
-  </body>
-</html>
+
+
+
+@include('frontend.body.brands')
+
+
+<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->    </div><!-- /.container -->
+</div><!-- /.body-content -->
+
+
+
+
+
+
+@endsection
+
+
+
+
+
